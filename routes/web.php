@@ -66,4 +66,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'almacen'], function () {
     Route::get('marcas/{id}/delete', 'MarcasController@destroy')->name('marcas.delete');
     Route::resource('embalajes','EmbalajesController');
     Route::get('embalajes/{id}/delete', 'EmbalajesController@destroy')->name('embalajes.delete');
+    Route::resource('categorias','CategoriasController');
+    Route::get('categorias/{id}/delete', 'CategoriasController@destroy')->name('categorias.delete');
+    Route::resource('subcategorias','SubcategoriaController');
+    Route::get('subcategorias/{id}/delete', 'SubcategoriaController@destroy')->name('subcategorias.delete');
 });
