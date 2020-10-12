@@ -64,4 +64,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'almacen'], function () {
     date_default_timezone_set('America/Bogota');
     Route::resource('marcas','MarcasController');
     Route::get('marcas/{id}/delete', 'MarcasController@destroy')->name('marcas.delete');
+    Route::resource('embalajes','EmbalajesController');
+    Route::get('embalajes/{id}/delete', 'EmbalajesController@destroy')->name('embalajes.delete');
 });
