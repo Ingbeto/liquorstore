@@ -167,6 +167,17 @@
                                     class="material-icons">person</i><span>Usuarios</span></a></li>
                     @endif
                 @endif
+
+                @if(session()->exists('MOD_ALMACEN'))
+                    @if($location=='almacen')
+                        <li class="active"><a href="{{route('admin.almacen')}}"><i
+                                    class="material-icons">storefront</i><span>Almacen</span></a></li>
+                    @else
+                        <li><a href="{{route('admin.almacen')}}"><i
+                                    class="material-icons">storefront</i><span>Almacen</span></a></li>
+                     @endif
+
+                 @endif
         </div>
         <!-- #Menu -->
         <!-- Footer -->

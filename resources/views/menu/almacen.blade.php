@@ -21,56 +21,13 @@
                 </div>
                 <div class="button-demo">
                     @if(session()->exists('PAG_MARCAS'))
-                    <a href="{{route('marcas.index')}}" class="btn  btn-lg  waves-effect" style="background-color: #38383A; color:white;">
-                        <div>
-                            <span><i class="material-icons">bubble_chart</i></span>
-                            <span>MARCAS</span>
-                            <span class="ink animate"></span></div>
-                    </a>
-                    @endif
-                    @if(session()->exists('PAG_CATEGORIAS'))
-                    <a href="{{route('categorias.index')}}" class="btn  btn-lg  waves-effect" style="background-color: #38383A; color:white;">
-                        <div>
-                            <span><i class="material-icons">category</i></span>
-                            <span>CATEGORÍAS</span>
-                            <span class="ink animate"></span></div>
-                    </a>
-                    @endif
-                    @if(session()->exists('PAG_SUBCATEGORIAS'))
-                        <a href="{{route('subcategorias.index')}}" class="btn  btn-lg  waves-effect" style="background-color: #38383A; color:white;">
+                        <a href="{{route('marcas.index')}}" class="btn  btn-lg  waves-effect" style="background-color: #38383A; color:white;">
                             <div>
-                                <span><i class="far fa-caret-square-up"></i></span>
-                                <span>SUBCATEGORÍAS</span>
+                                <span><i class="material-icons">bubble_chart</i></span>
+                                <span>MARCAS</span>
                                 <span class="ink animate"></span></div>
                         </a>
                     @endif
-                    @if(session()->exists('PAG_EMBALAJES'))
-                    <a href="{{route('embalajes.index')}}" class="btn  btn-lg  waves-effect" style="background-color: #38383A; color:white;">
-                        <div>
-                            <span><i class="material-icons">account_balance_wallet</i></span>
-                            <span>EMBALAJES</span>
-                            <span class="ink animate"></span>
-                        </div>
-                    </a>
-                    @endif
-                    @if(session()->exists('PAG_BODEGAS'))
-                    <a href="{{route('bodegas.index')}}" class="btn  btn-lg waves-effect" style="background-color: #38383A; color:white;">
-                        <div>
-                            <span><i class="material-icons">store</i></span>
-                            <span>BODEGAS</span>
-                            <span class="ink animate"></span>
-                        </div>
-                    </a>
-                    @endif
-                    @if(session()->exists('PAG_PRODUCTOS'))
-                            <a href="{{route('productos.index')}}" class="btn  btn-lg waves-effect" style="background-color: #38383A; color:white;">
-                                <div>
-                                    <span><i class="fas fa-wine-bottle"></i></span>
-                                    <span>PRODUCTOS</span>
-                                    <span class="ink animate"></span>
-                                </div>
-                            </a>
-                        @endif
                 </div>
             </div>
         </div>
