@@ -45,6 +45,14 @@
                                 <span class="ink animate"></span></div>
                         </a>
                     @endif
+                    @if(session()->exists('PAG_SUBCATEGORIAS'))
+                        <a href="{{route('subcategorias.index')}}" class="btn  btn-lg  waves-effect" style="background-color: #38383A; color:white;">
+                            <div>
+                                <span><i class="far fa-caret-square-up"></i></span>
+                                <span>SUBCATEGORÍAS</span>
+                                <span class="ink animate"></span></div>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
