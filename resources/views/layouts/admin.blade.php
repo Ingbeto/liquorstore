@@ -187,7 +187,7 @@
                     sign</a>.
                 </div>
                 <div class="version">
-                    <b>Desarrollado Por: </b> <a href="#">SKAYNET</a>
+                    <b>Desarrollado Por: </b> <a href="#">Alberto, Daniel y Carlos</a>
                 </div>
             </div>
             <!-- #Footer -->
