@@ -36,11 +36,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('almacen', 'MenuController@almacen')->name('admin.almacen');
 
     //NOTIFICACIONES
-    Route::resource('notificaciones', 'NotificacionController');
+    //Route::resource('notificaciones', 'NotificacionController');
 });
 
 //GRUPO DE RUTAS PARA LA ADMINISTRACIÓN DE USUARIOS
-Route::group(['middleware' => 'auth', 'prefix' => 'usuarios'], function () {
+Route::group([/*'middleware' => 'auth',*/ 'prefix' => 'usuarios'], function () {
     date_default_timezone_set('America/Bogota');
     //MODULOS
     Route::resource('modulo', 'ModuloController');
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'usuarios'], function () {
 });
 
 //GRUPO DE RUTAS PARA ALMACEN
-Route::group(['middleware' => 'auth', 'prefix' => 'almacen'], function () {
+Route::group([/*'middleware' => 'auth',*/ 'prefix' => 'almacen'], function () {
     date_default_timezone_set('America/Bogota');
     Route::resource('marcas','MarcasController');
     Route::get('marcas/{id}/delete', 'MarcasController@destroy')->name('marcas.delete');
