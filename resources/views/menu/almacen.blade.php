@@ -53,6 +53,15 @@
                                 <span class="ink animate"></span></div>
                         </a>
                     @endif
+                    @if(session()->exists('PAG_PRODUCTOS'))
+                        <a href="{{route('productos.index')}}" class="btn  btn-lg waves-effect" style="background-color: #38383A; color:white;">
+                            <div>
+                                <span><i class="fas fa-wine-bottle"></i></span>
+                                <span>PRODUCTOS</span>
+                                <span class="ink animate"></span>
+                            </div>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
