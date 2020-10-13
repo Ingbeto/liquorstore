@@ -47,7 +47,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-
+        //ASI DEBE USARSE EL REQUEST
+        $request->validate([
+            'nombre' => 'required',
+            'presentacion' => 'required',
+            'stock_minimo' => 'required|numeric',
+            'stock_maximo' => 'required|numeric',
+            'marca_id' => 'required',
+            'subcategoria_id' => 'required'
+        ]);
+        //ASI NO 
         $validate = Validator::make($request->all(),[
             'nombre' => 'required',
             'presentacion' => 'required',
