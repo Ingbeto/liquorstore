@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Marcas;
+use Illuminate\Http\Request;
 
 class MarcasController extends Controller
 {

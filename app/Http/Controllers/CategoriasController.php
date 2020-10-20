@@ -30,12 +30,7 @@ class CategoriasController extends Controller
         return view('almacen.categorias.create')->with('location',$location);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $request->validate([
