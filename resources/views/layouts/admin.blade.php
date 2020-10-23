@@ -178,6 +178,15 @@
                      @endif
 
                  @endif
+                @if(session()->exists('MOD_VENTAS'))
+                    @if($location=='ventas')
+                        <li class="active"><a href="{{route('admin.ventas')}}"><i
+                                    class="material-icons">import_contacts</i><span>Ventas</span></a></li>
+                    @else
+                        <li><a href="{{route('admin.ventas')}}"><i
+                                    class="material-icons">import_contacts</i><span>Ventas</span></a></li>
+                    @endif
+            @endif
         </div>
         <!-- #Menu -->
         <!-- Footer -->

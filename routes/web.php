@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('inicio', 'HomeController@inicio')->name('inicio');
     Route::get('almacen', 'MenuController@almacen')->name('admin.almacen');
 
+    Route::get('ventas', 'MenuController@ventas')->name('admin.ventas');
     //NOTIFICACIONES
     Route::resource('notificaciones', 'NotificacionController');
 });
@@ -75,4 +76,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'almacen'], function () {
     Route::get('productos/{id}/delete', 'ProductoController@destroy')->name('productos.delete');
     Route::resource('bodegas','BodegasController');
     Route::get('bodegas/{id}/delete', 'BodegasController@destroy')->name('bodegas.delete');
+});
+
+Route::group(['middleware' => 'auth', 'prefix' => 'ventas'], function () {
+    date_default_timezone_set('America/Bogota');
+    Route::resource('clientes','ClientesController');
+    Route::post('clientes/guardar','ClientesController@save')->name('clientes.save');
+    Route::get('clientes/get/json','ClientesController@json')->name('clientes.json');
+    Route::get('clientes/{id}/delete', 'ClientesController@destroy')->name('clientes.delete');
 });
