@@ -73,4 +73,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'almacen'], function () {
     Route::resource('productos','ProductoController');
     Route::get('producto/embalaje/{id}','ProductoController@embalajes');
     Route::get('productos/{id}/delete', 'ProductoController@destroy')->name('productos.delete');
+    Route::resource('bodegas','BodegasController');
+    Route::get('bodegas/{id}/delete', 'BodegasController@destroy')->name('bodegas.delete');
 });
