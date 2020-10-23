@@ -37,7 +37,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
     Route::get('ventas', 'MenuController@ventas')->name('admin.ventas');
     //NOTIFICACIONES
-    Route::resource('notificaciones', 'NotificacionController');
 });
 
 //GRUPO DE RUTAS PARA LA ADMINISTRACIÓN DE USUARIOS
