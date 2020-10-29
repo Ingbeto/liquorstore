@@ -20,6 +20,7 @@
                     <strong style="color: black">Detalles: </strong> <span style="color: black">Gestione Clientes, Facturas, Devoluciones, Descuentos y Deudas.</span>
                 </div>
                 <div class="button-demo">
+
                     @if(session()->exists('PAG_CLIENTES'))
                     <a href="{{route('clientes.index')}}" class="btn btn-lg  waves-effect" style="background-color: #38383A; color:white;">
                         <div>

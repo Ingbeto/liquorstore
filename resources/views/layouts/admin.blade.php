@@ -76,39 +76,6 @@
                 <!--<li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>-->
                 <!-- #END# Call Search -->
                 <!-- Notifications -->
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        <i class="material-icons">notifications</i>
-                        <span class="label-count">{{session()->get('total')}}</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header">NOTIFICACIONES</li>
-                        <li class="body">
-                            <ul class="menu">
-                                @if(session()->get('total')>0)
-                                    @foreach(session()->get('notificaciones') as $n)
-                                        <li>
-                                            <a href="{{$n->action}}">
-                                                <div class="icon-circle bg-light-green">
-                                                    <i class="material-icons">{{$n->icono}}</i>
-                                                </div>
-                                                <div class="menu-info">
-                                                    <h4>{{$n->titulo}}</h4>
-                                                    <p>
-                                                        <i class="material-icons">access_time</i> {{$n->fecha}}
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                @endif
-                            </ul>
-                        </li>
-                        <li class="footer">
-                            <a href="{{route('notificaciones.index')}}">Ver todas las notificaciones</a>
-                        </li>
-                    </ul>
-                </li>
                 <!-- #END# Notifications -->
                 <!--<li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>-->
             </ul>
@@ -158,6 +125,7 @@
                         <li><a href="{{route('inicio')}}"><i class="material-icons">home</i><span>Inicio</span></a></li>
                     @endif
                 @endif
+
                 @if(session()->exists('MOD_USUARIOS'))
                     @if($location=='usuarios')
                         <li class="active"><a href="{{route('admin.usuarios')}}"><i
@@ -178,6 +146,15 @@
                      @endif
 
                  @endif
+                @if(session()->exists('MOD_COMPRAS'))
+                    @if($location=='compras')
+                        <li class="active"><a href="{{route('admin.compras')}}"><i
+                                    class="material-icons">style</i><span>Compras</span></a></li>
+                    @else
+                        <li><a href="{{route('admin.compras')}}"><i
+                                    class="material-icons">style</i><span>Compras</span></a></li>
+                    @endif
+                @endif
                 @if(session()->exists('MOD_VENTAS'))
                     @if($location=='ventas')
                         <li class="active"><a href="{{route('admin.ventas')}}"><i

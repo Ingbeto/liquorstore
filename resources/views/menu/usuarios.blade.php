@@ -20,6 +20,14 @@
                     <strong style="color: black">Detalles: </strong > <span style="color: black">Agregue usuarios al sistema y administre sus privilegios, gestione los usuarios, configure los grupos de usuarios, así como también los módulos del sistema, entre otras tareas.</span>
                 </div>
                 <div class="button-demo">
+                    @if(session()->exists('PAG_PAGINAS'))
+                        <a href="{{route('pagina.index')}}" class="btn btn-lg  waves-effect" style="background-color: #38383A; color:white;">
+                            <div>
+                                <span><i class="material-icons">pages</i></span>
+                                <span>PÁGINAS DEL SISTEMA</span>
+                                <span class="ink animate"></span></div>
+                        </a>
+                    @endif
                     @if(session()->exists('PAG_USUARIO-MANUAL'))
                     <a href="{{route('usuario.create')}}" class="btn   btn-lg  waves-effect" style="background-color: #38383A; color:white;">
                         <div>
