@@ -36,6 +36,15 @@
                                 <span class="ink animate"></span></div>
                         </a>
                     @endif
+                        @if(session()->exists('PAG_GRUPOS-ROLES'))
+                            <a href="{{route('grupousuario.index')}}" class="btn  btn-lg  waves-effect" style="background-color: #38383A; color:white;">
+                                <div>
+                                    <span><i class="material-icons">group</i></span>
+                                    <span>GRUPOS O ROLES DE USUARIOS</span>
+                                    <span class="ink animate"></span>
+                                </div>
+                            </a>
+                        @endif
                     @if(session()->exists('PAG_USUARIO-MANUAL'))
                     <a href="{{route('usuario.create')}}" class="btn   btn-lg  waves-effect" style="background-color: #38383A; color:white;">
                         <div>
