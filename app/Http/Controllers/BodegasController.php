@@ -109,8 +109,8 @@ class BodegasController extends Controller
     public function destroy($id)
     {
         $bodega = Bodegas::findOrFail($id);
-        $exist = Kardexes::where('bodega_id',$bodega->id)->first();
-        if(!$exist){
+        //$exist = Kardexes::where('bodega_id',$bodega->id)->first();
+        //if(!$exist){
             $result = $bodega->delete();
 
             if($result){
@@ -120,9 +120,9 @@ class BodegasController extends Controller
                 flash("La Bodega no fue eliminada Correctamente")->error();
                 return  redirect()->back();
             }
-        }else{
+        /*}else{
             flash("No se puede eliminar la Bodega ya que tine movimientos Kardex asociados")->error();
             return  redirect()->back();
-        }
+        }*/
     }
 }
