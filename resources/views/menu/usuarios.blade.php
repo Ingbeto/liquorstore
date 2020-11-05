@@ -54,7 +54,16 @@
                         </div>
                     </a>
                     @endif
-                        @if(session()->exists('PAG_USUARIOS'))
+                    @if(session()->exists('PAG_PRIVILEGIOS'))
+                            <a href="{{route('grupousuario.privilegios')}}" class="btn btn-lg waves-effect" style="background-color: #38383A; color:white;">
+                                <div>
+                                    <span><i class="material-icons">desktop_access_disabled</i></span>
+                                    <span>PRIVILÉGIOS A PÁGINAS</span>
+                                    <span class="ink animate"></span>
+                                </div>
+                            </a>
+                    @endif
+                    @if(session()->exists('PAG_USUARIOS'))
                             <a href="{{route('usuario.index')}}" class="btn btn-lg  waves-effect" style="background-color: #38383A; color:white;" data-toggle="tooltip" data-placement="top" title="Tenga en cuenta que al cargar gran cantidad de registros puede hacer que el navegador se bloquee y deba esperar a que este cargue todos los registros de la base de datos para continuar la navegación.">
                                 <div>
                                     <span><i class="material-icons">list</i></span>
@@ -62,7 +71,7 @@
                                     <span class="ink animate"></span>
                                 </div>
                             </a>
-                        @endif
+                    @endif
                 </div>
             </div>
         </div>
