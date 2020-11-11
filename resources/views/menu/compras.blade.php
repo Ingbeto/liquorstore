@@ -37,7 +37,7 @@
                                 </div>
                             </a>
                         @endif
-                        @if(session()->exists('PAG_LISTA_ENTRADAS'))
+                       @if(session()->exists('PAG_LISTA_ENTRADAS'))
                             <a href="{{route('compras.index')}}" class="btn btn-lg  waves-effect" style="background-color: #38383A; color:white;">
                                 <div>
                                     <span><i class="material-icons">list</i></span>
