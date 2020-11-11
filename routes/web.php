@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('almacen', 'MenuController@almacen')->name('admin.almacen');
     Route::get('ventas', 'MenuController@ventas')->name('admin.ventas');
     Route::get('compras', 'MenuController@compras')->name('admin.compras');
+    Route::get('configuracion', 'MenuController@configuracion')->name('admin.configuracion');
     //NOTIFICACIONES
 });
 
@@ -94,4 +95,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'compras'], function () {
     Route::get('proveedores/get/json','ProveedoresController@json')->name('proveedores.json');
     Route::resource('compras','CompraController');
     Route::get('compra/detalle/{id}','DcompraController@show')->name('compras.detalles');
+});
+
+//GRUPO DE RUTAS PARA CONFIGURACION
+Route::group(['middleware' => 'auth', 'prefix' => 'configuracion'], function () {
+    date_default_timezone_set('America/Bogota');
+    Route::resource('series','SerieController');
+    Route::get('series/{id}/delete', 'SerieController@destroy')->name('series.delete');
 });

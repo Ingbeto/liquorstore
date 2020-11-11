@@ -164,6 +164,15 @@
                                     class="material-icons">import_contacts</i><span>Ventas</span></a></li>
                     @endif
             @endif
+                @if(session()->exists('MOD_CONFIGURACION'))
+                    @if($location=='configuracion')
+                        <li class="active"><a href="{{route('admin.configuracion')}}"><i
+                                    class="material-icons">settings</i><span>Configuracion</span></a></li>
+                    @else
+                        <li><a href="{{route('admin.configuracion')}}"><i
+                                    class="material-icons">settings</i><span>Configuracion</span></a></li>
+            @endif
+            @endif
         </div>
         <!-- #Menu -->
         <!-- Footer -->
