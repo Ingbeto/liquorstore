@@ -92,4 +92,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'compras'], function () {
     Route::get('proveedores/{id}/delete', 'ProveedoresController@destroy')->name('proveedores.delete');
     Route::post('proveedores/guardar','ProveedoresController@save')->name('proveedores.save');
     Route::get('proveedores/get/json','ProveedoresController@json')->name('proveedores.json');
+    Route::resource('compras','CompraController');
+    Route::get('compra/detalle/{id}','DcompraController@show')->name('compras.detalles');
 });
