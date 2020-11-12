@@ -34,9 +34,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('acceso', 'HomeController@confirmaRol')->name('rol');
     Route::get('inicio', 'HomeController@inicio')->name('inicio');
     Route::get('almacen', 'MenuController@almacen')->name('admin.almacen');
-
+    Route::get('ventas', 'MenuController@ventas')->name('admin.ventas');
+    Route::get('compras', 'MenuController@compras')->name('admin.compras');
+    Route::get('configuracion', 'MenuController@configuracion')->name('admin.configuracion');
     //NOTIFICACIONES
-    //Route::resource('notificaciones', 'NotificacionController');
 });
 
 //GRUPO DE RUTAS PARA LA ADMINISTRACIÓN DE USUARIOS
@@ -73,4 +74,32 @@ Route::group([/*'middleware' => 'auth',*/ 'prefix' => 'almacen'], function () {
     Route::resource('productos','ProductoController');
     Route::get('producto/embalaje/{id}','ProductoController@embalajes');
     Route::get('productos/{id}/delete', 'ProductoController@destroy')->name('productos.delete');
+    Route::resource('bodegas','BodegasController');
+    Route::get('bodegas/{id}/delete', 'BodegasController@destroy')->name('bodegas.delete');
+});
+
+Route::group(['middleware' => 'auth', 'prefix' => 'ventas'], function () {
+    date_default_timezone_set('America/Bogota');
+    Route::resource('clientes','ClientesController');
+    Route::post('clientes/guardar','ClientesController@save')->name('clientes.save');
+    Route::get('clientes/get/json','ClientesController@json')->name('clientes.json');
+    Route::get('clientes/{id}/delete', 'ClientesController@destroy')->name('clientes.delete');
+});
+
+//GRUPO DE RUTAS PARA COMPRAS
+Route::group(['middleware' => 'auth', 'prefix' => 'compras'], function () {
+    date_default_timezone_set('America/Bogota');
+    Route::resource('proveedores','ProveedoresController');
+    Route::get('proveedores/{id}/delete', 'ProveedoresController@destroy')->name('proveedores.delete');
+    Route::post('proveedores/guardar','ProveedoresController@save')->name('proveedores.save');
+    Route::get('proveedores/get/json','ProveedoresController@json')->name('proveedores.json');
+    Route::resource('compras','CompraController');
+    Route::get('compra/detalle/{id}','DcompraController@show')->name('compras.detalles');
+});
+
+//GRUPO DE RUTAS PARA CONFIGURACION
+Route::group(['middleware' => 'auth', 'prefix' => 'configuracion'], function () {
+    date_default_timezone_set('America/Bogota');
+    Route::resource('series','SerieController');
+    Route::get('series/{id}/delete', 'SerieController@destroy')->name('series.delete');
 });
