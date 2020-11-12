@@ -14,7 +14,7 @@ node {
   }
 
   stage ('Test') {
-    bat "vendor\bin\phpunit"
+    bat "vendor/bin/phpunit"
     mstest testResultsFile:"**/*.trx", keepLongStdio: true
   }
     
