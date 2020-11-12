@@ -3,10 +3,12 @@ node {
   stage('Checkout') {
     git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'main'
   }  
-  
+  stage('Build'){
+      bat 'composer install'
+  }
   stage('Clean') {
-    bat 'artisan config:clear'
-    bat 'artisan config:cache'
+    bat 'php artisan config:clear'
+    bat 'php artisan config:cache'
   }
   
   stage('Migrations') {
