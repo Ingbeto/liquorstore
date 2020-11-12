@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MarcasRequest;
 use App\Marcas;
 use App\Producto;
-use Illuminate\Http\Request;
+
 
 class MarcasController extends Controller
 {
