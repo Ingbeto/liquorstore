@@ -109,7 +109,7 @@ class SubcategoriaController extends Controller
     public function destroy($id)
     {
         $subcategoria = Subcategoria::findOrFail($id);
-        $productos = $subcategoria->productos();
+        $productos = $subcategoria->producto();
         if($productos->count() == 0){
             $result = $subcategoria->delete();
 

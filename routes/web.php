@@ -64,18 +64,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'usuarios'], function () {
 Route::group(['middleware' => 'auth', 'prefix' => 'almacen'], function () {
     date_default_timezone_set('America/Bogota');
     Route::resource('marcas','MarcasController');
-    Route::get('marcas/{id}/delete', 'MarcasController@destroy')->name('marcas.delete');
-    Route::resource('embalajes','EmbalajesController');
-    Route::get('embalajes/{id}/delete', 'EmbalajesController@destroy')->name('embalajes.delete');
     Route::resource('categorias','CategoriasController');
-    Route::get('categorias/{id}/delete', 'CategoriasController@destroy')->name('categorias.delete');
     Route::resource('subcategorias','SubcategoriaController');
-    Route::get('subcategorias/{id}/delete', 'SubcategoriaController@destroy')->name('subcategorias.delete');
+    Route::resource('embalajes','EmbalajesController');
+    Route::resource('bodegas','BodegasController');
     Route::resource('productos','ProductoController');
     Route::get('producto/embalaje/{id}','ProductoController@embalajes');
-    Route::get('productos/{id}/delete', 'ProductoController@destroy')->name('productos.delete');
-    Route::resource('bodegas','BodegasController');
+    Route::get('marcas/{id}/delete', 'MarcasController@destroy')->name('marcas.delete');
+    Route::get('categorias/{id}/delete', 'CategoriasController@destroy')->name('categorias.delete');
     Route::get('bodegas/{id}/delete', 'BodegasController@destroy')->name('bodegas.delete');
+    Route::get('subcategorias/{id}/delete', 'SubcategoriaController@destroy')->name('subcategorias.delete');
+    Route::get('embalajes/{id}/delete', 'EmbalajesController@destroy')->name('embalajes.delete');
+    Route::get('productos/{id}/delete', 'ProductoController@destroy')->name('productos.delete');
+    Route::get('producto/search/{code}','ProductoController@search')->name('productos.search');
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => 'ventas'], function () {
@@ -94,7 +95,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'compras'], function () {
     Route::post('proveedores/guardar','ProveedoresController@save')->name('proveedores.save');
     Route::get('proveedores/get/json','ProveedoresController@json')->name('proveedores.json');
     Route::resource('compras','CompraController');
-    Route::get('compra/detalle/{id}','DcompraController@show')->name('compras.detalles');
+    Route::get('compra/detalle/{id}','DCompraController@show')->name('compras.detalles');
 });
 
 //GRUPO DE RUTAS PARA CONFIGURACION

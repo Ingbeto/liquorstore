@@ -75,7 +75,7 @@ class CategoriasController extends Controller
     public function destroy($id)
     {
         $categoria = Categorias::findOrFail($id);
-        $exist = Producto::where('categoria_id',$categoria->id)->first();
+        $exist = false;
         if(!$exist){
             $result = $categoria->delete();
 

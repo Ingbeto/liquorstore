@@ -90,7 +90,6 @@ class CompraController extends Controller
                        $status = 'error';
                     }
                 }
-
                 foreach ($embalajes as $embalaje){
 
                     $Dcompra = new DCompra();
@@ -99,6 +98,7 @@ class CompraController extends Controller
                     $Dcompra->costo = $embalaje->costo;
                     $Dcompra->compra_id = $compra->id;
                     $Dcompra->save();
+
 
 
                     $producto = Producto::find($embalaje->producto);
@@ -126,6 +126,7 @@ class CompraController extends Controller
             }
 
         }catch (\Exception $e){
+            dd($e);
             $status = 'error';
             DB::rollBack();
         }
