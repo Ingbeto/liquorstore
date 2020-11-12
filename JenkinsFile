@@ -4,6 +4,7 @@ node {
     git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'main'
   }  
   stage('Build'){
+      bat 'composer config  -- disable-tls true'  
       bat 'composer install'
   }
   stage('Clean') {
