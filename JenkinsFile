@@ -1,0 +1,26 @@
+node {
+
+  stage('Checkout') {
+    git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'main'
+  }  
+  
+  stage('Clean') {
+    bat 'artisan config:clear'
+    bat 'artisan config:cache'
+  }
+  
+  stage('Migrations') {
+    bat 'php artisan migrate'
+  }
+
+  stage ('Test') {
+    bat "\vendor\bin\phpunit"
+    mstest testResultsFile:"**/*.trx", keepLongStdio: true
+  }
+    
+
+  stage('Publish') {
+    bat ''
+  } 
+  
+}
