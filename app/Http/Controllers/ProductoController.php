@@ -143,11 +143,11 @@ class ProductoController extends Controller
         $categorias = Categorias::all();
         $embalajes =  Embalaje::all();
         return view('almacen.productos.edit')
-            ->with('producto',$producto)
-            ->with('marcas',$marcas)
-            ->with('categorias',$categorias)
-            ->with('location','almacen')
-            ->with('embalajes',$embalajes);
+                ->with('producto',$producto)
+                ->with('marcas',$marcas)
+                ->with('categorias',$categorias)
+                ->with('location','almacen')
+                ->with('embalajes',$embalajes);
     }
 
     public function embalajes($id){
@@ -155,11 +155,11 @@ class ProductoController extends Controller
         $embalajes = [];
         foreach ($producto->embalajes as $embalaje){
             $embalajes[] =  [
-                'descripcion' => $embalaje->descripcion,
-                'embalaje_id' => $embalaje->pivot->embalaje_id,
-                'codigo_de_barras' => $embalaje->pivot->codigo_de_barras,
-                'unidades' => $embalaje->pivot->unidades,
-                'precio_venta' => $embalaje->pivot->precio_venta,
+                 'descripcion' => $embalaje->descripcion,
+                 'embalaje_id' => $embalaje->pivot->embalaje_id,
+                 'codigo_de_barras' => $embalaje->pivot->codigo_de_barras,
+                 'unidades' => $embalaje->pivot->unidades,
+                 'precio_venta' => $embalaje->pivot->precio_venta,
             ];
         }
         return response()->json([
@@ -257,8 +257,7 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto= Producto::findOrFail($id);
-        $exist = false;
-        //$exist = Kardex::where('producto_id',$producto->id)->first();
+        $exist = Kardex::where('producto_id',$producto->id)->first();
         if(!$exist){
             $result = $producto->delete();
 
@@ -280,34 +279,34 @@ class ProductoController extends Controller
     public function search($code){
 
         $producto =  DB::table('producto_embalaje')
-            ->join('embalajes','producto_embalaje.embalaje_id','=','embalajes.id')
-            ->join('productos','producto_embalaje.producto_id','=','productos.id')
-            ->where('producto_embalaje.codigo_de_barras','=',$code)
-            ->select(DB::raw('producto_embalaje.precio_venta as precio,unidades,nombre,presentacion,descripcion, producto_embalaje.id as unicode,codigo_de_barras, productos.id as producto'))
-            ->first();
+                          ->join('embalajes','producto_embalaje.embalaje_id','=','embalajes.id')
+                          ->join('productos','producto_embalaje.producto_id','=','productos.id')
+                          ->where('producto_embalaje.codigo_de_barras','=',$code)
+                          ->select(DB::raw('producto_embalaje.precio_venta as precio,unidades,nombre,presentacion,descripcion, producto_embalaje.id as unicode,codigo_de_barras, productos.id as producto'))
+                          ->first();
 
-        if($producto){
-            $existencias = DB::table('kardexes')
-                ->select(DB::raw('sum(cantidad) as cantidad,tipo_movimiento'))
-                ->where('producto_id',$producto->producto)
-                ->groupBy('tipo_movimiento')
-                ->get();
+      if($producto){
+          $existencias = DB::table('kardexes')
+              ->select(DB::raw('sum(cantidad) as cantidad,tipo_movimiento'))
+              ->where('producto_id',$producto->producto)
+              ->groupBy('tipo_movimiento')
+              ->get();
 
-            $existencia = 0;
-            foreach ($existencias as $item){
-                switch ($item->tipo_movimiento){
-                    case 'ENTRADA' :
-                        $existencia += $item->cantidad;
-                        break;
-                    case 'SALIDA' :
-                        $existencia -= $item->cantidad;
-                        break;
-                }
-            }
-            $producto->existencia_embalaje = intval($existencia / $producto->unidades);
-            $producto->existencia =  $existencia;
-            $producto->costo_promedio = Kardex::costo_promedio($producto->producto)*$producto->unidades;
-        }
+          $existencia = 0;
+          foreach ($existencias as $item){
+              switch ($item->tipo_movimiento){
+                  case 'ENTRADA' :
+                      $existencia += $item->cantidad;
+                      break;
+                  case 'SALIDA' :
+                      $existencia -= $item->cantidad;
+                      break;
+              }
+          }
+              $producto->existencia_embalaje = intval($existencia / $producto->unidades);
+              $producto->existencia =  $existencia;
+              $producto->costo_promedio = Kardex::costo_promedio($producto->producto)*$producto->unidades;
+          }
 
         return response()->json([
             'status' => $producto != null ? 'ok' : 'error',

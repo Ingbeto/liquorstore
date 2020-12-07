@@ -150,8 +150,8 @@ class ProveedoresController extends Controller
     public function destroy($id)
     {
         $proveedor= Proveedores::findOrFail($id);
-        //$exist = Compra::where('proveedor_id',$proveedor->id)->first();
-        //if(!$exist){
+        $exist = Compra::where('proveedor_id',$proveedor->id)->first();
+        if(!$exist){
             $result = $proveedor->delete();
 
             if($result){
@@ -161,9 +161,9 @@ class ProveedoresController extends Controller
                 flash("El Proveedor no fue eliminado Correctamente")->error();
                 return  redirect()->back();
             }
-    //}else{
-    //    flash("No se puede eliminar el Proveedor, ya que tiene compras asociadas")->error();
-    //    return  redirect()->back();
-    //}
+    }else{
+        flash("No se puede eliminar el Proveedor, ya que tiene compras asociadas")->error();
+        return  redirect()->back();
+    }
     }
 }

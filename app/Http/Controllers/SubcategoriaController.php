@@ -15,11 +15,7 @@ class SubcategoriaController extends Controller
         return view('almacen.subcategorias.list')->with('subcategorias',$subcategorias)->with('location','almacen');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $categorias =  Categorias::all();
@@ -27,12 +23,7 @@ class SubcategoriaController extends Controller
         return view('almacen.subcategorias.create',compact('categorias','location'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -53,23 +44,12 @@ class SubcategoriaController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Subcategoria  $subcategoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Subcategoria $subcategoria)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Subcategoria  $subcategoria
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $categorias = Categorias::all();
@@ -78,13 +58,7 @@ class SubcategoriaController extends Controller
         return view('almacen.subcategorias.edit',compact('subcategoria','categorias','location'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Subcategoria  $subcategoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $subcategoria =  Subcategoria::findOrFail($id);
@@ -100,16 +74,11 @@ class SubcategoriaController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Subcategoria  $subcategoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $subcategoria = Subcategoria::findOrFail($id);
-        $productos = $subcategoria->producto();
+        $productos = $subcategoria->productos();
         if($productos->count() == 0){
             $result = $subcategoria->delete();
 
@@ -125,4 +94,5 @@ class SubcategoriaController extends Controller
             return  redirect()->back();
         }
     }
+
 }

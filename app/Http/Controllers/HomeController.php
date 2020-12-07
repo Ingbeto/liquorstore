@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Grupousuario;
 use App\Notificacion;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller

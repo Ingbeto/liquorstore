@@ -94,6 +94,7 @@ class ClientesController extends Controller
     public function update(Request $request, $id)
     {
         $cliente =  Clientes::findOrFail($id);
+        $cliente->identificacion = $request->identificacion;
         $cliente->nombres = $request->nombres;
         $cliente->telefono = $request->telefono;
         $cliente->email = $request->email;
@@ -116,8 +117,8 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         $cliente = Clientes::findOrFail($id);
-        //$exist = MFactura::where('cliente_id',$cliente->id)->first();
-        //if(!$exist){
+        $exist = MFactura::where('cliente_id',$cliente->id)->first();
+        if(!$exist){
             $result = $cliente->delete();
 
             if($result){
@@ -127,10 +128,10 @@ class ClientesController extends Controller
                 flash("El Cliente no fue eliminado Correctamente")->error();
                 return  redirect()->back();
             }
-        /*}else{
-        flash("No se puede eliminar el Cliente ya que tiene facturas asociadas")->error();
+        }else{
+            flash("No se puede eliminar el Cliente ya que tiene facturas asociadas")->error();
             return  redirect()->back();
-        }*/
+        }
 
     }
 
