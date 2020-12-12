@@ -14,14 +14,22 @@ use Illuminate\Support\Facades\Validator;
 
 class CompraController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $entradas  = Compra::all();
         return view('compras.entradas.list')->with('entradas',$entradas)->with('location','compras');
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         date_default_timezone_set('America/Bogota');
@@ -32,7 +40,12 @@ class CompraController extends Controller
         return view('compras.entradas.create',compact('location','bodegas','productos','proveedores'));
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
 
@@ -90,6 +103,7 @@ class CompraController extends Controller
                        $status = 'error';
                     }
                 }
+
                 foreach ($embalajes as $embalaje){
 
                     $Dcompra = new DCompra();
@@ -126,7 +140,6 @@ class CompraController extends Controller
             }
 
         }catch (\Exception $e){
-            dd($e);
             $status = 'error';
             DB::rollBack();
         }
@@ -137,24 +150,46 @@ class CompraController extends Controller
 
     }
 
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Compra  $compra
+     * @return \Illuminate\Http\Response
+     */
     public function show(Compra $compra)
     {
         //
     }
 
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Compra  $compra
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Compra $compra)
     {
         //
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Compra  $compra
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, Compra $compra)
     {
         //
     }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Compra  $compra
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(Compra $compra)
     {
         //

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Embalaje;
+use App\Producto;
 use Illuminate\Http\Request;
 
 class EmbalajesController extends Controller
