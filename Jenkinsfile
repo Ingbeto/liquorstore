@@ -28,13 +28,13 @@
   
 } */
 
-pipeline {
-agent any
 
-stages {
+node {
 
   stage('Checkout') {
+      steps{
     git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'main'
+      }
   } 
 
   stage('Build') {
@@ -53,6 +53,4 @@ stages {
       bat 'start chrome http://licoreria_l6.test/home'
     }
   }
-
-}
 }
