@@ -39,7 +39,7 @@ node {
 
   stage('Build') {
       
-          bat 'composer install --no-interaction'
+          bat 'composer install'
       
   }
   stage('Test') {
