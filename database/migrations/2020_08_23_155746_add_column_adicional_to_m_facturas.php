@@ -14,7 +14,7 @@ class AddColumnAdicionalToMFacturas extends Migration
     public function up()
     {
         Schema::table('m_facturas', function (Blueprint $table) {
-            $table->longText('adicionales')->default('[]');
+            $table->longText('adicionales')->nullable();
         });
 
         Schema::dropIfExists('adicionals');

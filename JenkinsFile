@@ -1,4 +1,4 @@
-node {
+/*node {
 
   stage('Checkout') {
     git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'main'
@@ -18,7 +18,7 @@ node {
 
   stage ('Test') {
     bat "vendor/bin/phpunit"
-    mstest testResultsFile:"**/*.trx", keepLongStdio: true
+    mstest testResultsFile:"**/ /*.trx", keepLongStdio: true
   }
     
 
@@ -26,4 +26,33 @@ node {
     bat ''
   } 
   
+} */
+
+pipeline {
+agent any
+
+stages {
+
+  stage('Checkout') {
+    git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'develops'
+  } 
+
+  stage('Build') {
+      steps {
+          bat 'composer install --no-interaction'
+      }
+  }
+  stage('Test') {
+      steps {
+          bat './vendor/bin/phpunit'
+      }
+  }
+
+  stage('Public'){
+    steps{
+      bat 'start chrome http://licoreria_l6.test/home'
+    }
+  }
+
+}
 }

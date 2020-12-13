@@ -146,6 +146,7 @@
                      @endif
 
                  @endif
+
                 @if(session()->exists('MOD_COMPRAS'))
                     @if($location=='compras')
                         <li class="active"><a href="{{route('admin.compras')}}"><i
@@ -155,6 +156,7 @@
                                     class="material-icons">style</i><span>Compras</span></a></li>
                     @endif
                 @endif
+
                 @if(session()->exists('MOD_VENTAS'))
                     @if($location=='ventas')
                         <li class="active"><a href="{{route('admin.ventas')}}"><i
@@ -163,7 +165,8 @@
                         <li><a href="{{route('admin.ventas')}}"><i
                                     class="material-icons">import_contacts</i><span>Ventas</span></a></li>
                     @endif
-            @endif
+                @endif
+
                 @if(session()->exists('MOD_CONFIGURACION'))
                     @if($location=='configuracion')
                         <li class="active"><a href="{{route('admin.configuracion')}}"><i
@@ -171,7 +174,17 @@
                     @else
                         <li><a href="{{route('admin.configuracion')}}"><i
                                     class="material-icons">settings</i><span>Configuracion</span></a></li>
-            @endif
+                    @endif
+                @endif
+
+                @if(session()->exists('MOD_REPORTES'))
+                @if($location=='reportes')
+                    <li class="active"><a href="{{route('admin.reportes')}}"><i
+                                class="material-icons">pie_chart</i><span>Reportes</span></a></li>
+                @else
+                    <li><a href="{{route('admin.reportes')}}"><i
+                                class="material-icons">pie_chart</i><span>Reportes</span></a></li>
+                @endif
             @endif
         </div>
         <!-- #Menu -->
