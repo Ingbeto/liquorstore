@@ -34,7 +34,7 @@ agent any
 stages {
 
   stage('Checkout') {
-    git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'develops'
+    git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'main'
   } 
 
   stage('Build') {
