@@ -32,25 +32,25 @@
 node {
 
   stage('Checkout') {
-      steps{
+      
     git url: 'https://github.com/Ingbeto/liquorstore.git',branch: 'main'
-      }
+      
   } 
 
   stage('Build') {
-      steps {
+      
           bat 'composer install --no-interaction'
-      }
+      
   }
   stage('Test') {
-      steps {
+      
           bat './vendor/bin/phpunit'
-      }
+      
   }
 
   stage('Public'){
-    steps{
+    
       bat 'start chrome http://licoreria_l6.test/home'
-    }
+    
   }
 }
